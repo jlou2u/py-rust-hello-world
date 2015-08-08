@@ -1,0 +1,17 @@
+[package]
+name = "py-rust-hello-world"
+version = "0.1.0"
+authors = ["Justin Lewis <justin.lewis@gmail.com>"]
+
+[lib]
+name = "hello_world"
+crate-type = ["dylib"]
+
+[dependencies]
+interpolate_idents = "*"
+
+[dependencies.cpython]
+version = "*"
+default-features = false
+features = ["python27-sys"]
+
