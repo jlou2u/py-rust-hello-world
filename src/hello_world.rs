@@ -3,7 +3,7 @@
 
 #[macro_use] extern crate cpython;
 
-use cpython::{PyResult, Python, PyTuple};
+use cpython::{PyResult, Python, PyTuple, PyObject};
 
 mod foo {
     pub fn hello_world() -> () {
@@ -17,7 +17,7 @@ py_module_initializer!(libhello_world, |_py, m| {
     Ok(())
 });
 
-fn hello_world<'p>(py: Python<'p>, args: &PyTuple<'p>) -> PyResult<'p, u64> {
+fn hello_world<'p>(py: Python<'p>, args: &PyTuple<'p>) -> PyResult<'p, PyObject<'p>> {
     foo::hello_world();
-    Ok(0)
+    Ok(py.None())
 }
